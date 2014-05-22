@@ -22,7 +22,7 @@ function copyFiles(){
 
     cp ./main.sh $INSTALL_DIR/main.sh
     copyDirectory utils
-    copyDirectory projectsDir
+    copyDirectory dirUtils
 
 }
 
@@ -33,6 +33,7 @@ echo "Setting up bash customizations!"
 prepTarget
 copyFiles
 
+echo "source $INSTALL_DIR/main.sh" >> ~/.bashrc
 
 pause "Press [ENTER] to continue!"
 
