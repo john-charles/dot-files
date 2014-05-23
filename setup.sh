@@ -24,6 +24,7 @@ function copyFiles(){
 
     cp ./main.sh $INSTALL_DIR/main.sh
     copyDirectory utils
+    copyDirectory libexec
     copyDirectory dirUtils
 
 }
