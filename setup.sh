@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 source utils/pause.sh
 
-INSTALL_DIR="$HOME/Desktop/.bashCustomizations"
+INSTALL_DIR=$(./utils/findLocals.sh bashCustom)
 
 function prepTarget(){
     echo "Preparing installation directroy: $INSTALL_DIR"
