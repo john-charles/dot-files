@@ -7,7 +7,23 @@ function __getLocalDataDirectoryLinux (){
     fi
 }
 
+function __getLocalDataDirectoryCygwin (){
 
+    if [ ! -z "$LOCALAPPDATA" ]; then
+        cygpath -u "$LOCALAPPDATA/$1"
+    else
+        cygpath -u "$APPDATA/$1"
+    fi
+}
+
+function __getLocalDataDirectoryWindows (){
+
+    if [ ! -z "$LOCALAPPDATA" ]; then
+        echo "$LOCALAPPDATA/$1"
+    else
+        echo "$APPDATA/$1"
+    fi
+}
 
 osEnv=`uname -s`;
 
@@ -16,10 +32,18 @@ case $osEnv in
     Linux)
         __getLocalDataDirectoryLinux $1
         ;;
+
+    MINGW*)
+        __getLocalDataDirectoryWindows $1
+        ;;
+
+    CYGWIN*)
+        __getLocalDataDirectoryCygwin $1
+        ;;
     
     *)
-        echo "Unknown environment '$osEnv'"
-        return 1
+        echo "Unknown environment '$osEnv'" >&2
+        exit 1
         ;;
 
 esac
