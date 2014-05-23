@@ -9,7 +9,7 @@ function __getLocalDataDirectoryLinux (){
 
 
 
-local osEnv=`uname -s`;
+osEnv=`uname -s`;
 
 case $osEnv in
     

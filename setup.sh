@@ -2,7 +2,9 @@
 
 source utils/pause.sh
 
-INSTALL_DIR=$(./utils/findLocals.sh bashCustom)
+PATH=./libexec:$PATH
+
+INSTALL_DIR=$(getLocalDataDirectory.sh bashCustom)
 
 function prepTarget(){
     echo "Preparing installation directroy: $INSTALL_DIR"
@@ -37,7 +39,7 @@ while true; do
 
     echo "Do you want to source bash customizations in your .bashrc?"
     echo "If this is the first time your running this script you most"
-    read -p "likely want to answer yes! (y/n)?" yn
+    read -p "likely want to answer yes! (y/n)? " yn
 
     case $yn in
         [Yy]*)
@@ -55,7 +57,7 @@ done
 
 while true; do
 
-    read -p "Source the newly installed customizations now? (y/n)" yn
+    read -p "Source the newly installed customizations now? (y/n) " yn
 
     case $yn in
         [Yy]*)
