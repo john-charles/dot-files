@@ -56,24 +56,6 @@ while true; do
 
 done
 
-while true; do
-
-    read -p "Source the newly installed customizations now? (y/n) " yn
-
-    case $yn in
-        [Yy]*)
-            echo "Sourcing $INSTALL_DIR/main.sh now!"
-            source $INSTALL_DIR/main.sh
-            break;;
-        [Nn]*)
-            echo "Not Sourcing $INSTALL_DIR/main.sh"
-            break;;
-        *)
-            echo "Please enter (y/n)"
-    esac
-
-done
-
 pause "All Done, press [ENTER] to exit!"
 
 

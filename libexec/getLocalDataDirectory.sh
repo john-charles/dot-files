@@ -16,12 +16,12 @@ function __getLocalDataDirectoryCygwin (){
     fi
 }
 
-function __getLocalDataDirectoryWindows (){
+function __getLocalDataDirectoryMinGW (){
 
     if [ ! -z "$LOCALAPPDATA" ]; then
-        echo "$LOCALAPPDATA/$1"
+        echo "$LOCALAPPDATA/$1" | sed 's/\\/\//g'
     else
-        echo "$APPDATA/$1"
+        echo "$APPDATA/$1" | sed 's/\\/\//g'
     fi
 }
 
@@ -34,7 +34,7 @@ case $osEnv in
         ;;
 
     MINGW*)
-        __getLocalDataDirectoryWindows $1
+        __getLocalDataDirectoryMinGW $1
         ;;
 
     CYGWIN*)
