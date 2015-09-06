@@ -2,8 +2,6 @@
 
 source functions/pause.sh
 
-PATH=./libexec:$PATH
-
 INSTALL_DIR=$HOME/System
 
 
