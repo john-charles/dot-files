@@ -29,32 +29,28 @@ function copyFiles(){
 
 }
 
+function setupSource(){
+    
+    SOURCE_LINE="source $INSTALL_DIR/main.sh"
+    
+    if grep -Fxq "$SOURCE_LINE" "$HOME/.bashrc"; then
+        echo "dot files custom already installed in bashrc."
+    else
+        echo "Appending 'source $INSTALL_DIR/main.sh' to ~/.bashrc"
+        echo "source $INSTALL_DIR/main.sh" >> ~/.bashrc
+        echo "Please run source ~/.bashrc to activate..."
+    fi
+    
+}
+
 
 
 echo "Setting up bash customizations!"
 
 prepTarget
 copyFiles
+setupSource
 
-while true; do
-
-    echo "Do you want to source bash customizations in your .bashrc?"
-    echo "If this is the first time your running this script you most"
-    read -p "likely want to answer yes! (y/n)? " yn
-
-    case $yn in
-        [Yy]*)
-            echo "Appending 'source $INSTALL_DIR/main.sh' to ~/.bashrc"
-            echo "source $INSTALL_DIR/main.sh" >> ~/.bashrc
-            break;;
-        [Nn]*)
-            echo "Not appending 'source $INSTALL_DIR/main.sh' to ~/.bashrc"
-            break;;
-        * )
-            echo "Please enter (y/n) only!"
-    esac
-
-done
 
 pause "All Done, press [ENTER] to exit!"
 
