@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-
-
 import os, sys, time, subprocess
 from os.path import expanduser, join, exists
 
+def debug(*args):
+    if '--debug' in sys.argv:
+        print args
 
 ##FILE_LIST_DIRECTORY = 0x0001
-
 class File:
 
     def __init__( self, file="." ):
@@ -20,50 +20,6 @@ class File:
     def getName( self ):
 
         return os.path.basename( self.file )
-
-##class Watcher:
-##
-##    def __init__( self ):
-##        self.root = expanduser("~\\Downloads")
-##
-##        self.installers = join( self.root, "installers" )
-##        if not exists( self.installers ): os.mkdir( self.installers )
-##        self.archives = join( self.root, "archives" )
-##        if not exists( self.archives ): os.mkdir( self.archives )
-##        self.documents = join( self.root, "documents" )
-##        if not exists( self.documents ): os.mkdir( self.documents )
-##        
-##        self.watched_directory = win32file.CreateFile (
-##            self.root,
-##            FILE_LIST_DIRECTORY,
-##            win32con.FILE_SHARE_READ | win32con.FILE_SHARE_WRITE,
-##            None,
-##            win32con.OPEN_EXISTING,
-##            win32con.FILE_FLAG_BACKUP_SEMANTICS,
-##            None )
-##
-##    
-##    def eventOcurred( self, evt, file ):
-##
-##        print evt, os.stat( file )
-##        
-##
-##    def run( self ):
-##
-##        while True:
-##
-##            results = win32file.ReadDirectoryChangesW (
-##                self.watched_directory,
-##                1024,
-##                True,
-##                win32con.FILE_NOTIFY_CHANGE_LAST_WRITE |
-##                win32con.FILE_NOTIFY_CHANGE_SECURITY |
-##                win32con.FILE_NOTIFY_CHANGE_FILE_NAME,
-##                None,
-##                None )
-##
-##            for action, file in results:
-##                self.eventOcurred( action, join( self.root, file ) )
 
 def getDir( *args ):
     path = join( *args )
@@ -114,7 +70,7 @@ EXTRACTED = getDir( HOME, "Downloads", "Extracted" )
 CODE_SNIPPETS = getDir( HOME, "Projects", "0_Snippets")
 JARS_DIR = getDir( HOME, "Projects", "0_Libraries", "java", "jars" )
 
-
+debug("SETUP DIRS")
     
 def moveFile( src, dst ):
 
