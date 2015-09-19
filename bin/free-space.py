@@ -12,5 +12,5 @@ if __name__ == '__main__':
         line = line.replace('  ', ' ')
     
     parts = line.split(' ')
-    print("%s Free (%s) " % (parts[4], parts[1]))
+    print("(%s)  %s free" % (parts[1], parts[4]))
     
