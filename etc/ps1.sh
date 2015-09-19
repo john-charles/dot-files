@@ -1,3 +1,5 @@
-function __pw1_git_branch(){
-    
+#!/bin/bash
+
+function __ps1_freespace () {
+    echo `free-space.py` Free
 }
