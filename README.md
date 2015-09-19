@@ -6,9 +6,7 @@ This is a repository to store any and all customizations I make to my environmen
 
 These are really not dot files their a whole system.
 
-cd $HOME
-git clone https://github.com/john-charles/dot-files.git System
-./System/setup.sh
+cd $HOME;git clone https://github.com/john-charles/dot-files.git System;./System/setup.sh
 
 and your done!
 
