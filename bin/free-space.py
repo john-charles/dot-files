@@ -11,5 +11,5 @@ if __name__ == '__main__':
     while line.count('  '):
         line = line.replace('  ', ' ')
 
-    print(line.split(' ')[2])
+    print(line.split(' ')[3])
     
